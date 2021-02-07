@@ -5,12 +5,19 @@ import App from './App';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import { Appliance } from './features/appliance/Appliance';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Header } from './features/header/Header';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <Header/>
+        <Route path="/" exact={true} component={Appliance} />
+        {/* <App /> */}
+        </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
