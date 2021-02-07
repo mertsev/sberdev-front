@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAppliance, selectAppliance } from "./applianceSlice";
 import styles from "./Appliance.module.css";
+import { useParams } from "react-router-dom";
 
 export function Appliance() {
   const appliance = useSelector(selectAppliance);
   const dispatch = useDispatch();
+  const { id } = useParams<{ id: string }>();
 
+  useEffect(() => {
+    dispatch(fetchAppliance(id));
+  }, []);
+  //console.log(id);
   return (
     <div>
       <div className={styles.card}>
@@ -17,13 +23,6 @@ export function Appliance() {
         ) : (
           <span className={styles.card}>Power: Off</span>
         )}
-        <button
-          className={styles.button}
-          aria-label="Decrement value"
-          onClick={() => dispatch(fetchAppliance("601e866d8b02834574da0c0e"))}
-        >
-          Update
-        </button>
       </div>
     </div>
   );

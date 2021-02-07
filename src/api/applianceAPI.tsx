@@ -19,3 +19,17 @@ export async function getAllAppliances(page: number) {
   console.log(data);
   return data.appliance;
 }
+
+export async function updateAppliance(
+  _id: string,
+  powerState: boolean,
+  deviceName: string
+) {
+  const url = `http://127.0.0.1:8080/api/appliance/${_id}`;
+  const { data } = await axios.put(url, {
+    powerState: powerState,
+    deviceName: deviceName,
+  });
+  console.log(data);
+  return data.appliance;
+}

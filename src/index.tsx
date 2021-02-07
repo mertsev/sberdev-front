@@ -16,7 +16,7 @@ ReactDOM.render(
       <Provider store={store}>
         <Header />
         <Route path="/" exact={true} component={ApplianceList} />
-        <Route path="/appliance" exact={true} component={Appliance} />
+        <Route path="/appliance/:id" exact={true} component={Appliance} />
         {/* <App /> */}
       </Provider>
     </BrowserRouter>
