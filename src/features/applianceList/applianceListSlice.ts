@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk, RootState } from "../../app/store";
-import { getAppliance } from "../../api/applianceAPI";
+import { getAllAppliances, getAppliance } from "../../api/applianceAPI";
 
 interface ApplianceState {
   _id: string;
@@ -8,21 +8,24 @@ interface ApplianceState {
   deviceName: string;
 }
 
-const initialState: ApplianceState = {
-  _id: "none",
-  powerState: false,
-  deviceName: "unknown device",
+interface ApplianceList {
+  applianceList: ApplianceState[];
+}
+
+const initialState: ApplianceList = {
+  applianceList: [
+    { _id: "none", powerState: false, deviceName: "unknown device" },
+    { _id: "none", powerState: false, deviceName: "unknown device" },
+  ],
 };
 
-export const ApplianceSlice = createSlice({
+export const ApplianceListSlice = createSlice({
   name: "Appliance",
   initialState,
   reducers: {
-    setAppliance: (state, action: PayloadAction<ApplianceState>) => {
-      //console.log(action);
-      state._id = action.payload._id;
-      state.powerState = action.payload.powerState;
-      state.deviceName = action.payload.deviceName;
+    setAllAppliances: (state, action: PayloadAction<ApplianceState[]>) => {
+      console.log(action, "kek");
+      state.applianceList = action.payload;
     },
     // increment: state => {
     //   // Redux Toolkit allows us to write "mutating" logic in reducers. It
@@ -41,12 +44,12 @@ export const ApplianceSlice = createSlice({
   },
 });
 
-export const { setAppliance } = ApplianceSlice.actions;
+export const { setAllAppliances } = ApplianceListSlice.actions;
 
-export const fetchAppliance = (_id: string): AppThunk => async (dispatch) => {
+export const fetchAppliances = (page: number): AppThunk => async (dispatch) => {
   try {
-    const appliance = await getAppliance(_id);
-    dispatch(setAppliance(appliance));
+    const appliance = await getAllAppliances(page);
+    dispatch(setAllAppliances(appliance));
   } catch (err) {
     console.log(err);
   }
@@ -74,6 +77,6 @@ export const fetchAppliance = (_id: string): AppThunk => async (dispatch) => {
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.Appliance.value)`
-export const selectAppliance = (state: RootState) => state.appliance;
+export const selectAllAppliances = (state: RootState) => state.applianceList;
 
-export default ApplianceSlice.reducer;
+export default ApplianceListSlice.reducer;
