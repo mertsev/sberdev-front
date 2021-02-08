@@ -4,7 +4,7 @@ import {
   createNewAppliance,
   updateExistingAppliance,
 } from "./applianceFormSlice";
-import styles from "./ApplianceForm.module.css";
+//import styles from "./ApplianceForm.module.css";
 import Select from "react-select";
 import { useParams } from "react-router-dom";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
@@ -19,7 +19,7 @@ type ApplianceInputs = {
   powerState: ApplianceStateSelector;
 };
 
-export function ApplianceForm() {
+export function ApplianceForm(): JSX.Element {
   const dispatch = useDispatch();
   const applianceId: { id: string } = useParams<{ id: string }>();
   const idAppliance = applianceId.id;

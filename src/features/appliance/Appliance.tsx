@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAppliance, selectAppliance } from "./applianceSlice";
 import styles from "./Appliance.module.css";
 import { Link, useParams } from "react-router-dom";
 
-export function Appliance() {
+export function Appliance(): JSX.Element {
   const appliance = useSelector(selectAppliance);
   const dispatch = useDispatch();
   const { id } = useParams<{ id: string }>();
