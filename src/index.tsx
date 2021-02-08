@@ -10,6 +10,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { Header } from "./features/header/Header";
 import { ApplianceList } from "./features/applianceList/ApplianceList";
 import { ApplianceForm } from "./features/applianceForm/ApplianceForm";
+import { Job } from "./features/job/Job";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -28,6 +29,7 @@ ReactDOM.render(
           exact={true}
           component={ApplianceForm}
         />
+        <Route path="/job/view/:id" exact={true} component={Job} />
         {/* <App /> */}
       </Provider>
     </BrowserRouter>
