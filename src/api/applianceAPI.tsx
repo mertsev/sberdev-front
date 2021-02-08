@@ -33,3 +33,14 @@ export async function updateAppliance(
   console.log(data);
   return data.appliance;
 }
+
+export async function createAppliance(deviceName: string, powerState: boolean) {
+  console.log(`creating appliance`);
+  const url = `http://127.0.0.1:8080/api/appliance/`;
+  const { data } = await axios.post(url, {
+    powerState: powerState,
+    deviceName: deviceName,
+  });
+  console.log(data);
+  return data.appliance;
+}

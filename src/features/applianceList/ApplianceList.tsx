@@ -16,7 +16,7 @@ export function ApplianceList() {
     <div>
       <div className={styles.card}>
         {appliances.applianceList.map((appliance) => (
-          <Link to={{ pathname: `/appliance/${appliance._id}` }}>
+          <Link to={{ pathname: `/appliance/view/${appliance._id}` }}>
             <div>
               <span>Id: {appliance._id}</span>
               <span> Name: {appliance.deviceName}</span>

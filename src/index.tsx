@@ -9,6 +9,7 @@ import { Appliance } from "./features/appliance/Appliance";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Header } from "./features/header/Header";
 import { ApplianceList } from "./features/applianceList/ApplianceList";
+import { ApplianceForm } from "./features/applianceForm/ApplianceForm";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,7 +17,12 @@ ReactDOM.render(
       <Provider store={store}>
         <Header />
         <Route path="/" exact={true} component={ApplianceList} />
-        <Route path="/appliance/:id" exact={true} component={Appliance} />
+        <Route path="/appliance/view/:id" exact={true} component={Appliance} />
+        <Route
+          path="/appliance/create"
+          exact={true}
+          component={ApplianceForm}
+        />
         {/* <App /> */}
       </Provider>
     </BrowserRouter>
