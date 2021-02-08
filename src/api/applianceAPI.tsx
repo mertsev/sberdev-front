@@ -44,3 +44,10 @@ export async function createAppliance(deviceName: string, powerState: boolean) {
   console.log(data);
   return data.appliance;
 }
+
+export async function deleteAppliance(_id: string) {
+  const url = `http://127.0.0.1:8080/api/appliance/${_id}`;
+  const { data } = await axios.put(url);
+  console.log(data);
+  return data.appliance;
+}

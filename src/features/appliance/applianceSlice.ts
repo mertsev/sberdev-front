@@ -52,18 +52,27 @@ export const fetchAppliance = (_id: string): AppThunk => async (dispatch) => {
   }
 };
 
-export const changeAppliance = (
-  _id: string,
-  powerState: boolean,
-  deviceName: string
-): AppThunk => async (dispatch) => {
-  try {
-    const appliance = await getAppliance(_id);
-    dispatch(setAppliance(appliance));
-  } catch (err) {
-    console.log(err);
-  }
-};
+// export const deleteAppliance = (_id: string): AppThunk => async (dispatch) => {
+//   try {
+//     //const appliance = await getAppliance(_id);
+//     dispatch(setAppliance(appliance));
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+
+// export const changeAppliance = (
+//   _id: string,
+//   powerState: boolean,
+//   deviceName: string
+// ): AppThunk => async (dispatch) => {
+//   try {
+//     const appliance = await getAppliance(_id);
+//     dispatch(setAppliance(appliance));
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This

@@ -19,7 +19,12 @@ ReactDOM.render(
         <Route path="/" exact={true} component={ApplianceList} />
         <Route path="/appliance/view/:id" exact={true} component={Appliance} />
         <Route
-          path="/appliance/create"
+          path="/appliance/create/"
+          exact={true}
+          component={ApplianceForm}
+        />
+        <Route
+          path="/appliance/edit/:id"
           exact={true}
           component={ApplianceForm}
         />

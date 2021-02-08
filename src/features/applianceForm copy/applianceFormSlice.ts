@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk, RootState } from "../../app/store";
-import { createAppliance, updateAppliance } from "../../api/applianceAPI";
+import { createAppliance } from "../../api/applianceAPI";
 
 interface ApplianceState {
   _id: string;
@@ -23,12 +23,6 @@ export const ApplianceFormSlice = createSlice({
       state.powerState = action.payload.powerState;
       state.deviceName = action.payload.deviceName;
     },
-    updatedApplianceReducer: (state, action: PayloadAction<ApplianceState>) => {
-      //console.log(action);
-      state._id = action.payload._id;
-      state.powerState = action.payload.powerState;
-      state.deviceName = action.payload.deviceName;
-    },
     // increment: state => {
     //   // Redux Toolkit allows us to write "mutating" logic in reducers. It
     //   // doesn't actually mutate the state because it uses the Immer library,
@@ -46,10 +40,7 @@ export const ApplianceFormSlice = createSlice({
   },
 });
 
-export const {
-  addAppliance,
-  updatedApplianceReducer,
-} = ApplianceFormSlice.actions;
+export const { addAppliance } = ApplianceFormSlice.actions;
 
 export const createNewAppliance = (
   deviceName: string,
@@ -64,18 +55,18 @@ export const createNewAppliance = (
   }
 };
 
-export const updateExistingAppliance = (
-  _id: string,
-  powerState: boolean,
-  deviceName: string
-): AppThunk => async (dispatch) => {
-  try {
-    const appliance = await updateAppliance(_id, powerState, deviceName);
-    dispatch(updatedApplianceReducer(appliance));
-  } catch (err) {
-    console.log(err);
-  }
-};
+// export const changeAppliance = (
+//   _id: string,
+//   powerState: boolean,
+//   deviceName: string
+// ): AppThunk => async (dispatch) => {
+//   try {
+//     const appliance = await getAppliance(_id);
+//     dispatch(setAppliance(appliance));
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This

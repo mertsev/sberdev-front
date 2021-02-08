@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { createNewAppliance } from "./applianceFormSlice";
+import React from "react";
+import { useDispatch } from "react-redux";
+import {
+  createNewAppliance,
+  updateExistingAppliance,
+} from "./applianceFormSlice";
 import styles from "./ApplianceForm.module.css";
 import Select from "react-select";
 import { useParams } from "react-router-dom";
@@ -18,31 +21,38 @@ type ApplianceInputs = {
 
 export function ApplianceForm() {
   const dispatch = useDispatch();
-  const { id } = useParams<{ id: string }>();
+  const applianceId: { id: string } = useParams<{ id: string }>();
+  const idAppliance = applianceId.id;
   const {
     register,
     handleSubmit,
-    watch,
     errors,
     control,
   } = useForm<ApplianceInputs>();
 
   const onSubmit: SubmitHandler<ApplianceInputs> = (data) => {
-    // const newAppliance = {
-    //   deviceName: data.deviceName,
-    //   powerState: data.powerState,
-    // };
-    console.log(data);
-    dispatch(createNewAppliance(data.deviceName, data.powerState.value));
-    alert(JSON.stringify(data));
+    if (idAppliance) {
+      dispatch(
+        updateExistingAppliance(
+          idAppliance,
+          data.powerState.value,
+          data.deviceName
+        )
+      );
+      console.log("updating appliance");
+    } else {
+      dispatch(createNewAppliance(data.deviceName, data.powerState.value));
+    }
   }; // your form submit function which will invoke after successful validation
 
-  // useEffect(() => {
-  //   dispatch(fetchAppliance(id));
-  // }, []);
-  //console.log(id);
   return (
     <div>
+      {/* Show appliance id in editing mode */}
+      {idAppliance ? (
+        <div>Appliance id: {idAppliance}</div>
+      ) : (
+        <div>Creating new appliance</div>
+      )}
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>Appliance Name</label>
         <input
@@ -60,10 +70,9 @@ export function ApplianceForm() {
             { value: false, label: "Off" },
           ]}
           control={control}
-          defaultValue="true"
-          simpleValue="true"
+          defaultValue={{ value: true, label: "On" }}
         />
-
+        {errors.powerState && <p>Please enter a device name</p>}
         <input type="submit" />
       </form>
     </div>
