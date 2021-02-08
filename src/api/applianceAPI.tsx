@@ -9,14 +9,14 @@ export interface Appliance {
 export async function getAppliance(_id: string) {
   const url = `http://127.0.0.1:8080/api/appliance/${_id}/`;
   const { data } = await axios.get(url);
-  console.log(data);
+  // console.log(data);
   return data.appliance;
 }
 
 export async function getAllAppliances(page: number) {
   const url = `http://127.0.0.1:8080/api/appliance/`;
   const { data } = await axios.get(url);
-  console.log(data);
+  // console.log(data);
   return data.appliance;
 }
 
@@ -30,7 +30,7 @@ export async function updateAppliance(
     powerState: powerState,
     deviceName: deviceName,
   });
-  console.log(data);
+  // console.log(data);
   return data.appliance;
 }
 
@@ -41,13 +41,13 @@ export async function createAppliance(deviceName: string, powerState: boolean) {
     powerState: powerState,
     deviceName: deviceName,
   });
-  console.log(data);
+  // console.log(data);
   return data.appliance;
 }
 
 export async function deleteAppliance(_id: string) {
   const url = `http://127.0.0.1:8080/api/appliance/${_id}`;
-  const { data } = await axios.put(url);
-  console.log(data);
+  const { data } = await axios.delete(url);
+  // console.log(data);
   return data.appliance;
 }

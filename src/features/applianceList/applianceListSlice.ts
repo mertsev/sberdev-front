@@ -24,7 +24,6 @@ export const ApplianceListSlice = createSlice({
   initialState,
   reducers: {
     setAllAppliances: (state, action: PayloadAction<ApplianceState[]>) => {
-      console.log(action, "kek");
       state.applianceList = action.payload;
     },
     // increment: state => {

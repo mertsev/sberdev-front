@@ -4,7 +4,7 @@ import { fetchAppliances, selectAllAppliances } from "./applianceListSlice";
 import styles from "./ApplianceList.module.css";
 import { Link } from "react-router-dom";
 
-export function ApplianceList() {
+export function ApplianceList(): JSX.Element {
   const appliances = useSelector(selectAllAppliances);
   const dispatch = useDispatch();
 
@@ -14,16 +14,14 @@ export function ApplianceList() {
 
   return (
     <div>
-      <div className={styles.card}>
-        {appliances.applianceList.map((appliance) => (
-          <Link to={{ pathname: `/appliance/view/${appliance._id}` }}>
-            <div>
-              <span>Id: {appliance._id}</span>
-              <span> Name: {appliance.deviceName}</span>
-            </div>
-          </Link>
-        ))}
-      </div>
+      {appliances.applianceList.map((appliance) => (
+        <Link to={{ pathname: `/appliance/view/${appliance._id}` }}>
+          <div className={styles.card}>
+            <span>Id: {appliance._id}</span>
+            <span> Name: {appliance.deviceName}</span>
+          </div>
+        </Link>
+      ))}
     </div>
   );
 }

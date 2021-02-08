@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk, RootState } from "../../app/store";
-import { getAppliance } from "../../api/applianceAPI";
+import { deleteAppliance, getAppliance } from "../../api/applianceAPI";
 
 interface ApplianceState {
   _id: string;
@@ -24,13 +24,15 @@ export const ApplianceSlice = createSlice({
       state.powerState = action.payload.powerState;
       state.deviceName = action.payload.deviceName;
     },
-    // increment: state => {
-    //   // Redux Toolkit allows us to write "mutating" logic in reducers. It
-    //   // doesn't actually mutate the state because it uses the Immer library,
-    //   // which detects changes to a "draft state" and produces a brand new
-    //   // immutable state based off those changes
-    //   state.value += 1;
-    // },
+    removeAppliance: (state) => {
+      // Redux Toolkit allows us to write "mutating" logic in reducers. It
+      // doesn't actually mutate the state because it uses the Immer library,
+      // which detects changes to a "draft state" and produces a brand new
+      // immutable state based off those changes
+      state._id = "null";
+      state.powerState = false;
+      state.deviceName = "null";
+    },
     // decrement: state => {
     //   state.value -= 1;
     // },
@@ -41,7 +43,7 @@ export const ApplianceSlice = createSlice({
   },
 });
 
-export const { setAppliance } = ApplianceSlice.actions;
+export const { setAppliance, removeAppliance } = ApplianceSlice.actions;
 
 export const fetchAppliance = (_id: string): AppThunk => async (dispatch) => {
   try {
@@ -52,14 +54,17 @@ export const fetchAppliance = (_id: string): AppThunk => async (dispatch) => {
   }
 };
 
-// export const deleteAppliance = (_id: string): AppThunk => async (dispatch) => {
-//   try {
-//     //const appliance = await getAppliance(_id);
-//     dispatch(setAppliance(appliance));
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+export const deleteApplianceAs = (_id: string): AppThunk => async (
+  dispatch
+) => {
+  try {
+    const appliance = await deleteAppliance(_id);
+    dispatch(removeAppliance());
+    alert("Appliance was deleted");
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 // export const changeAppliance = (
 //   _id: string,

@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchAppliance, selectAppliance } from "./applianceSlice";
+import {
+  deleteApplianceAs,
+  fetchAppliance,
+  selectAppliance,
+} from "./applianceSlice";
 import styles from "./Appliance.module.css";
 import { Link, useParams } from "react-router-dom";
 
@@ -10,7 +14,12 @@ export function Appliance(): JSX.Element {
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    dispatch(fetchAppliance(id));
+    console.log(id);
+    if (id) {
+      dispatch(fetchAppliance(id));
+    } else {
+      console.log("nope");
+    }
   }, []);
   //console.log(id);
   return (
@@ -32,8 +41,15 @@ export function Appliance(): JSX.Element {
             <Link to={{ pathname: `/appliance/edit/${appliance._id}` }}>
               <button type="button">Edit appliance</button>
             </Link>
-            <Link to={{ pathname: `/appliance/edit/${appliance._id}` }}>
-              <button type="button">Delete appliance</button>
+
+            <button
+              type="button"
+              onClick={() => dispatch(deleteApplianceAs(appliance._id))}
+            >
+              Delete appliance
+            </button>
+            <Link to={{ pathname: `/job/create/${appliance._id}` }}>
+              <button type="button">Create Job for appliance</button>
             </Link>
           </div>
         </div>
