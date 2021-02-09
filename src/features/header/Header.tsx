@@ -16,6 +16,11 @@ export function Header() {
           Create appliance
         </button>
       </Link>
+      <Link to="/jobs">
+        <button type="button" className={styles.button}>
+          Job List
+        </button>
+      </Link>
     </div>
   );
 }

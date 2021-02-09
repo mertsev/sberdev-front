@@ -4,6 +4,7 @@ import applianceReducer from "../features/appliance/applianceSlice";
 import applianceListReducer from "../features/applianceList/applianceListSlice";
 import applianceFormReducer from "../features/applianceForm/applianceFormSlice";
 import jobReducer from "../features/job/jobSlice";
+import jobListReducer from "../features/jobList/jobListSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     applianceList: applianceListReducer,
     appliianceForm: applianceFormReducer,
     job: jobReducer,
+    jobList: jobListReducer,
   },
 });
 

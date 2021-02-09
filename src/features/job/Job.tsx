@@ -27,7 +27,9 @@ export function Job(): JSX.Element {
           <div className={styles.card}>
             <div className={styles.card}>Id: {job._id}</div>
             <div className={styles.card}>Name: {job.jobName}</div>
-            <div className={styles.card}>Name: {job.deviceId}</div>
+            <div className={styles.card}>deviceId: {job.deviceId}</div>
+            <div className={styles.card}>startTime: {job.startTime}</div>
+            <div className={styles.card}>endTime: {job.endTime}</div>
             {/* {job.powerState ? (
               <span className={styles.card}>Power: On</span>
             ) : (
@@ -43,11 +45,8 @@ export function Job(): JSX.Element {
               type="button"
               onClick={() => dispatch(deleteJobAs(job._id))}
             >
-              Delete jobs
+              Delete job
             </button>
-            <Link to={{ pathname: `/job/create/${job._id}` }}>
-              <button type="button">Create Job for job</button>
-            </Link>
           </div>
         </div>
       )}
