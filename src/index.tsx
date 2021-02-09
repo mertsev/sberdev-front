@@ -32,6 +32,7 @@ ReactDOM.render(
         />
         <Route path="/job/view/:id" exact={true} component={Job} />
         <Route path="/jobs" exact={true} component={JobList} />
+        <Route path="/appliance/jobs/:id" exact={true} component={JobList} />
         {/* <App /> */}
       </Provider>
     </BrowserRouter>

@@ -7,6 +7,7 @@ import {
 } from "./applianceSlice";
 import styles from "./Appliance.module.css";
 import { Link, useParams } from "react-router-dom";
+import { JobList } from "../jobList/JobList";
 
 export function Appliance(): JSX.Element {
   const appliance = useSelector(selectAppliance);
@@ -54,6 +55,7 @@ export function Appliance(): JSX.Element {
           </div>
         </div>
       )}
+      <JobList />
     </div>
   );
 }

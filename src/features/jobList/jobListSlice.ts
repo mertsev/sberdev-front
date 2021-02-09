@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk, RootState } from "../../app/store";
-import { getAllAppliances, getAppliance } from "../../api/applianceAPI";
-import { getAllJobs } from "../../api/jobAPI";
+import { getAllJobs, getAllJobsByDevice } from "../../api/jobAPI";
 
 export interface JobState {
   _id: string;
@@ -34,6 +33,9 @@ export const JobListSlice = createSlice({
     setAllJobs: (state, action: PayloadAction<JobState[]>) => {
       state.jobList = action.payload;
     },
+    setDeviceJobs: (state, action: PayloadAction<JobState[]>) => {
+      state.jobList = action.payload;
+    },
     // increment: state => {
     //   // Redux Toolkit allows us to write "mutating" logic in reducers. It
     //   // doesn't actually mutate the state because it uses the Immer library,
@@ -51,12 +53,23 @@ export const JobListSlice = createSlice({
   },
 });
 
-export const { setAllJobs } = JobListSlice.actions;
+export const { setAllJobs, setDeviceJobs } = JobListSlice.actions;
 
 export const fetchJobs = (page: number): AppThunk => async (dispatch) => {
   try {
     const appliance = await getAllJobs(page);
     dispatch(setAllJobs(appliance));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const fetchJobsByDeviceId = (id: string): AppThunk => async (
+  dispatch
+) => {
+  try {
+    const appliance = await getAllJobsByDevice(id);
+    dispatch(setDeviceJobs(appliance));
   } catch (err) {
     console.log(err);
   }

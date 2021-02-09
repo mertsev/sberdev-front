@@ -40,6 +40,13 @@ export async function getAllJobs(page: number) {
   return data.Job;
 }
 
+export async function getAllJobsByDevice(id: string) {
+  const url = `http://127.0.0.1:8080/api/Job/device/${id}`;
+  const { data } = await axios.get(url);
+  // console.log(data);
+  return data.Job;
+}
+
 export async function updateJob(
   _id: string,
   powerState: boolean,
