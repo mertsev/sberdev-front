@@ -27,7 +27,12 @@ export function Job(): JSX.Element {
           <div className={styles.card}>
             <div className={styles.card}>Id: {job._id}</div>
             <div className={styles.card}>Name: {job.jobName}</div>
-            <div className={styles.card}>deviceId: {job.deviceId}</div>
+            <div className={styles.card}>
+              deviceId:{" "}
+              <Link to={{ pathname: `/appliance/view/${job._id}` }}>
+                {job.deviceId}
+              </Link>
+            </div>
             <div className={styles.card}>startTime: {job.startTime}</div>
             <div className={styles.card}>endTime: {job.endTime}</div>
             {/* {job.powerState ? (

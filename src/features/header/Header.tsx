@@ -21,6 +21,11 @@ export function Header() {
           Job List
         </button>
       </Link>
+      <Link to="/job/create">
+        <button type="button" className={styles.button}>
+          Create job
+        </button>
+      </Link>
     </div>
   );
 }

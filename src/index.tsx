@@ -12,6 +12,7 @@ import { ApplianceList } from "./features/applianceList/ApplianceList";
 import { ApplianceForm } from "./features/applianceForm/ApplianceForm";
 import { Job } from "./features/job/Job";
 import { JobList } from "./features/jobList/JobList";
+import { JobForm } from "./features/jobForm/JobForm";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -33,6 +34,8 @@ ReactDOM.render(
         <Route path="/job/view/:id" exact={true} component={Job} />
         <Route path="/jobs" exact={true} component={JobList} />
         <Route path="/appliance/jobs/:id" exact={true} component={JobList} />
+        <Route path="/job/create/" exact={true} component={JobForm} />
+        <Route path="/job/edit/:id" exact={true} component={JobForm} />
         {/* <App /> */}
       </Provider>
     </BrowserRouter>

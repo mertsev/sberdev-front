@@ -4,15 +4,15 @@ export interface Job {
   _id: string;
   deviceId: string;
   jobName: string;
-  startTime: Date;
-  endTime: Date;
+  startTime: string;
+  endTime: string;
 }
 
 export async function createJob(
   deviceId: string,
   jobName: string,
-  startTime: Date,
-  endTime: Date
+  startTime: string,
+  endTime: string
 ) {
   console.log(`creating Job`);
   const url = `http://127.0.0.1:8080/api/Job/`;
@@ -49,13 +49,17 @@ export async function getAllJobsByDevice(id: string) {
 
 export async function updateJob(
   _id: string,
-  powerState: boolean,
-  deviceName: string
+  deviceId: string,
+  jobName: string,
+  startTime: string,
+  endTime: string
 ) {
   const url = `http://127.0.0.1:8080/api/Job/${_id}`;
   const { data } = await axios.put(url, {
-    powerState: powerState,
-    deviceName: deviceName,
+    deviceId: deviceId,
+    jobName: jobName,
+    startTime: startTime,
+    endTime: endTime,
   });
   // console.log(data);
   return data.Job;
