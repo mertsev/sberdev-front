@@ -1,31 +1,19 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import styles from "./Header.module.css";
+import React from "react";
+import { Container, Header } from "@sberdevices/ui";
 
-export function Header() {
+export function HeaderComponent() {
   return (
-    <div>
-      <Link to="/">
-        <button type="button" className={styles.button}>
-          Home (Appliances List)
-        </button>
-      </Link>
-      <Link to="/appliance/create">
-        <button type="button" className={styles.button}>
-          Create appliance
-        </button>
-      </Link>
-      <Link to="/jobs">
-        <button type="button" className={styles.button}>
-          Job List
-        </button>
-      </Link>
-      <Link to="/job/create">
-        <button type="button" className={styles.button}>
-          Create job
-        </button>
-      </Link>
-    </div>
+    <Container>
+      <Header
+        back={true}
+        logo="./images/logo.png"
+        logoAlt="Logo"
+        title="Header title text"
+        subtitle="Subtitle text"
+        onBackClick={() => console.log("Back click!")}
+      >
+        <div>Header content</div>
+      </Header>
+    </Container>
   );
 }

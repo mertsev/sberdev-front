@@ -1,56 +1,32 @@
 import React from "react";
-import logo from "./logo.svg";
-import { Counter } from "./features/counter/Counter";
 import "./App.css";
+import { HeaderComponent } from "./features/header/Header";
+import { Route } from "react-router-dom";
+import { ApplianceList } from "./features/applianceList/ApplianceList";
+import { Appliance } from "./features/appliance/Appliance";
+import { ApplianceForm } from "./features/applianceForm/ApplianceForm";
+import { Job } from "./features/job/Job";
+import { JobList } from "./features/jobList/JobList";
+import { JobForm } from "./features/jobForm/JobForm";
+import { HomePage } from "./features/homePage/homePage";
 
-function App() {
+function App(): JSX.Element {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div>
+      <HeaderComponent />
+      <Route path="/" exact={true} component={HomePage} />
+      {/* <Route path="/appliance/view/:id" exact={true} component={Appliance} />
+      <Route path="/appliance/create/" exact={true} component={ApplianceForm} />
+      <Route
+        path="/appliance/edit/:id"
+        exact={true}
+        component={ApplianceForm}
+      />
+      <Route path="/job/view/:id" exact={true} component={Job} />
+      <Route path="/jobs" exact={true} component={JobList} />
+      <Route path="/appliance/jobs/:id" exact={true} component={JobList} />
+      <Route path="/job/create/" exact={true} component={JobForm} />
+      <Route path="/job/edit/:id" exact={true} component={JobForm} /> */}
     </div>
   );
 }

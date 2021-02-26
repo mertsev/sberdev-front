@@ -5,38 +5,13 @@ import App from "./App";
 import { store } from "./app/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
-import { Appliance } from "./features/appliance/Appliance";
-import { BrowserRouter, Route } from "react-router-dom";
-import { Header } from "./features/header/Header";
-import { ApplianceList } from "./features/applianceList/ApplianceList";
-import { ApplianceForm } from "./features/applianceForm/ApplianceForm";
-import { Job } from "./features/job/Job";
-import { JobList } from "./features/jobList/JobList";
-import { JobForm } from "./features/jobForm/JobForm";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <Header />
-        <Route path="/" exact={true} component={ApplianceList} />
-        <Route path="/appliance/view/:id" exact={true} component={Appliance} />
-        <Route
-          path="/appliance/create/"
-          exact={true}
-          component={ApplianceForm}
-        />
-        <Route
-          path="/appliance/edit/:id"
-          exact={true}
-          component={ApplianceForm}
-        />
-        <Route path="/job/view/:id" exact={true} component={Job} />
-        <Route path="/jobs" exact={true} component={JobList} />
-        <Route path="/appliance/jobs/:id" exact={true} component={JobList} />
-        <Route path="/job/create/" exact={true} component={JobForm} />
-        <Route path="/job/edit/:id" exact={true} component={JobForm} />
-        {/* <App /> */}
+        <App />
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,
