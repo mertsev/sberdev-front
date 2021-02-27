@@ -15,7 +15,7 @@ const initialState: NotesState = {
   notes: [
     {
       id: "none",
-      title: "none",
+      title: "testzametka",
       completed: false,
     },
   ],
@@ -25,11 +25,11 @@ export const ToDoSlice = createSlice({
   name: "ToDo",
   initialState,
   reducers: {
-    add_note: (state, action: PayloadAction<Note>) => {
+    add_note: (state, action: PayloadAction<string>) => {
       //console.log(action);
       state.notes.push({
         id: Math.random().toString(36).substring(7),
-        title: action.payload.title,
+        title: action.payload,
         completed: false,
       });
     },

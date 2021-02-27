@@ -35,8 +35,8 @@ export const toDo: FC = memo(() => {
   const dispatch = useDispatch();
   // const [appState, dispatch] = useReducer(reducer, { notes: [] });
 
-  const [note, setNote] = useState("");
-
+  // const [note, setNote] = useState("");
+  const note = "testNote";
   const assistantStateRef = useRef<AssistantAppState>();
   const assistantRef = useRef<ReturnType<typeof createAssistant>>();
 
@@ -67,8 +67,9 @@ export const toDo: FC = memo(() => {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          dispatch({ type: "add_note", note });
-          setNote("");
+          // dispatch({ type: "add_note", note });
+          dispatch(add_note(note));
+          // setNote("");
         }}
       >
         <input
@@ -76,7 +77,7 @@ export const toDo: FC = memo(() => {
           type="text"
           placeholder="Add Note"
           value={note}
-          onChange={({ target: { value } }) => setNote(value)}
+          onChange={({ target: { value } }) => dispatch(add_note(value))}
           required
           autoFocus
         />
