@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Header } from "@sberdevices/ui";
 
-export function HeaderComponent() {
+export function HeaderComponent(): JSX.Element {
   return (
     <Container>
       <Header
