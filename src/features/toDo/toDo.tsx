@@ -30,6 +30,11 @@ const initializeAssistant = (getState: any) => {
   return createAssistant({ getState });
 };
 
+type assistantAction = {
+  type: string;
+  note?: string;
+};
+
 export const toDo: FC = memo(() => {
   const toDo = useSelector(selectToDo);
   const dispatch = useDispatch();
@@ -45,7 +50,9 @@ export const toDo: FC = memo(() => {
 
     assistantRef.current.on("data", ({ action }: any) => {
       if (action) {
-        dispatch(action);
+        action = action as assistantAction;
+        console.log(action);
+        dispatch(add_note(action.note));
       }
     });
   }, []);
