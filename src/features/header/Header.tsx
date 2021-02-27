@@ -6,13 +6,13 @@ export function HeaderComponent(): JSX.Element {
     <Container>
       <Header
         back={true}
-        logo="./images/logo.png"
+        logo="./sberkot_swag.png"
         logoAlt="Logo"
-        title="Header title text"
-        subtitle="Subtitle text"
+        title="All your base are belong to us"
+        subtitle="Повар спрашивает повара..."
         onBackClick={() => console.log("Back click!")}
       >
-        <div>Header content</div>
+        <div>Утренний поварёнок</div>
       </Header>
     </Container>
   );

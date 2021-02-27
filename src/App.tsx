@@ -23,6 +23,7 @@ import { darkJoy } from "@sberdevices/plasma-tokens/themes";
 // получаем цвета для нашего интерфейса
 import { text, background, gradient } from "@sberdevices/plasma-tokens";
 import { foodCard } from "./features/foodCard/foodCard";
+import { recipePage } from "./features/recipePage/recipePage";
 
 const AppStyled = styled.div`
   padding: 30px;
@@ -56,6 +57,7 @@ function App(): JSX.Element {
         <HeaderComponent />
         <Route path="/" exact={true} component={toDo} />
         <Route path="/card" exact={true} component={foodCard} />
+        <Route path="/recipe" exact={true} component={recipePage} />
         {/* <Route path="/" exact={true} component={HomePage} /> */}
         {/* <Route path="/appliance/view/:id" exact={true} component={Appliance} />
       <Route path="/appliance/create/" exact={true} component={ApplianceForm} />
