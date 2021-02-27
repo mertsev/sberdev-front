@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.0",
+    "@sberdevices/assistant-client": "^2.10.0",
     "@sberdevices/plasma-icons": "^1.0.0-rc.1",
     "@sberdevices/plasma-tokens": "^1.0.0-rc.4",
     "@sberdevices/ui": "^1.0.0-rc.60",

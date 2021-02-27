@@ -9,12 +9,14 @@ import { Job } from "./features/job/Job";
 import { JobList } from "./features/jobList/JobList";
 import { JobForm } from "./features/jobForm/JobForm";
 import { HomePage } from "./features/homePage/homePage";
+import { toDo } from "./features/toDo/toDo";
 
 function App(): JSX.Element {
   return (
     <div>
       <HeaderComponent />
-      <Route path="/" exact={true} component={HomePage} />
+      <Route path="/" exact={true} component={toDo} />
+      {/* <Route path="/" exact={true} component={HomePage} /> */}
       {/* <Route path="/appliance/view/:id" exact={true} component={Appliance} />
       <Route path="/appliance/create/" exact={true} component={ApplianceForm} />
       <Route
