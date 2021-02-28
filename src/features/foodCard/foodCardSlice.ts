@@ -6,6 +6,9 @@ type Recipe = {
   id: number;
   title: string;
   subtitle: string;
+  picture: string;
+  steps: string[];
+  ingredients: string[];
 };
 
 type RecipeState = {
@@ -18,16 +21,25 @@ const initialState: RecipeState = {
       id: 1,
       title: "Омлет",
       subtitle: "Это классика, это знать надо!",
+      picture: "./omelette.png",
+      steps: ["bruh", "kek"],
+      ingredients: ["kek", "bruh"],
     },
     {
       id: 2,
       title: "Салат Цезарь",
       subtitle: "Это классика, это знать надо!",
+      picture: "./omelette.png",
+      steps: ["bruh", "kek"],
+      ingredients: ["kek", "bruh"],
     },
     {
       id: 3,
       title: "Сытный дед",
       subtitle: "Это классика, это знать надо!",
+      picture: "./omelette.png",
+      steps: ["bruh", "kek"],
+      ingredients: ["kek", "bruh"],
     },
   ],
 };

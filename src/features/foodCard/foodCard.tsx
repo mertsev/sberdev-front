@@ -145,7 +145,7 @@ export const foodCard: FC = memo(() => {
               >
                 <CardBody>
                   <CardMedia
-                    src="./sberkot_fat.png"
+                    src={"./sberkot_fat.png"}
                     // placeholder="./images/320_320_1.jpg"
                     ratio={"1 / 2"}
                   />
