@@ -18,6 +18,7 @@ import { darkJoy } from "@sberdevices/plasma-tokens/themes";
 import { text, background, gradient } from "@sberdevices/plasma-tokens";
 import { foodCard } from "./features/foodCard/foodCard";
 import { recipePage } from "./features/recipePage/recipePage";
+import { recipeCarouselPage } from "./features/recipeCarousel/recipeCarousel";
 
 const AppStyled = styled.div`
   padding: 30px;
@@ -53,6 +54,7 @@ function App(): JSX.Element {
         {/* <Route path="/" exact={true} component={toDo} /> */}
         <Route path="/" exact={true} component={foodCard} />
         <Route path="/recipe" exact={true} component={recipePage} />
+        <Route path="/carousel" exact={true} component={recipeCarouselPage} />
       </div>
     </AppStyled>
   );
