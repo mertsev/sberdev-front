@@ -32,7 +32,10 @@ import {
   CellDisclosure,
   CellIcon,
   CellListItem,
+  Col,
+  Container,
   MarkedItem,
+  Row,
   TextBox,
   TextBoxBiggerTitle,
   TextBoxBigTitle,
@@ -102,50 +105,80 @@ export const recipePage: FC = memo(() => {
   //   { title: "Item 4", subtitle: "Ekek" },
   // ];
   const recipes = useSelector(selectFoodCard);
-  const items = recipes.recipes;
-
-  const axis = "x";
-
-  const [index, setIndex] = useRemoteHandlers({
-    initialIndex: 0,
-    axis,
-    delay: 30,
-    longDelay: 150,
-    min: 0,
-    max: items.length - 1,
-  });
+  const item = recipes.recipes[0];
 
   return (
     <>
-      <Card style={{ width: "20rem" }}>
-        <CardContent compact>
-          <Cell
-            content={<TextBoxBigTitle>{"Ингредиенты"}</TextBoxBigTitle>}
-            // right={<span style={{ marginTop: 5 }}>{"Detail"}</span>}
-          />
-          {items.map(({ steps, ingredients }, i) => (
-            <CellListItem
-              key={`item:${i}`}
-              left={
-                <CellIcon>{/* <IconPlaceholder size={2.25} /> */}</CellIcon>
-              }
-              content={
-                <>
-                  <MarkedItem text="Дмитрий гордон" style={{ color: primary }}>
-                    <IconDone size="xs" color={accent} />
-                    {steps} {ingredients}
-                  </MarkedItem>
-                </>
-                // <TextBox>
-                //   <TextBoxTitle>{"bruh"}</TextBoxTitle>
-                //   <TextBoxSubTitle>{"Subtitle"}</TextBoxSubTitle>
-                // </TextBox>
-              }
-              // right={<CellDisclosure />}
-            />
-          ))}
-        </CardContent>
-      </Card>
+      <Container>
+        <Row>
+          <Col size={6} sizeXL={5}>
+            <Card style={{ boxSizing: "border-box", marginBottom: "30px" }}>
+              <CardContent compact>
+                <Cell
+                  content={<TextBoxBigTitle>{"Ингредиенты"}</TextBoxBigTitle>}
+                  // right={<span style={{ marginTop: 5 }}>{"Detail"}</span>}
+                />
+                {item.ingredients.map((ingredient, i) => (
+                  <CellListItem
+                    key={`item:${i}`}
+                    left={
+                      <CellIcon>
+                        {/* <IconPlaceholder size={2.25} /> */}
+                      </CellIcon>
+                    }
+                    content={
+                      <>
+                        <MarkedItem style={{ color: primary }}>
+                          <IconDone size="xs" color={accent} />
+                          {ingredient}
+                        </MarkedItem>
+                      </>
+                      // <TextBox>
+                      //   <TextBoxTitle>{"bruh"}</TextBoxTitle>
+                      //   <TextBoxSubTitle>{"Subtitle"}</TextBoxSubTitle>
+                      // </TextBox>
+                    }
+                    // right={<CellDisclosure />}
+                  />
+                ))}
+              </CardContent>
+            </Card>
+          </Col>
+          <Col size={7}>
+            <Card style={{ boxSizing: "border-box" }}>
+              <CardContent compact>
+                <Cell
+                  content={<TextBoxBigTitle>{"Шаги"}</TextBoxBigTitle>}
+                  // right={<span style={{ marginTop: 5 }}>{"Detail"}</span>}
+                />
+                {item.steps.map((step, i) => (
+                  <CellListItem
+                    key={`item:${i}`}
+                    left={
+                      <CellIcon>
+                        {/* <IconPlaceholder size={2.25} /> */}
+                      </CellIcon>
+                    }
+                    content={
+                      <>
+                        <MarkedItem style={{ color: primary }}>
+                          <IconDone size="xs" color={accent} />
+                          {step}
+                        </MarkedItem>
+                      </>
+                      // <TextBox>
+                      //   <TextBoxTitle>{"bruh"}</TextBoxTitle>
+                      //   <TextBoxSubTitle>{"Subtitle"}</TextBoxSubTitle>
+                      // </TextBox>
+                    }
+                    // right={<CellDisclosure />}
+                  />
+                ))}
+              </CardContent>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 });
