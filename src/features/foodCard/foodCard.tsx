@@ -84,9 +84,12 @@ export const foodCard: FC = memo(() => {
       if (action) {
         action = action as foodCardAction;
         if (action.type == "choose_recipe_by_name") {
-          console.log("kek");
+          console.log(action, items);
+
           const id =
-            items.filter((item) => item.title == action.name)[0]?.id || 0;
+            items.filter((item) => {
+              return item.title.toLowerCase() == action.name.toLowerCase();
+            })[0]?.id || 0;
 
           history.push(`/recipe/${id}`);
         }

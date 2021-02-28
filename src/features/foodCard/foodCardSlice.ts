@@ -20,7 +20,7 @@ type RecipeState = {
 const initialState: RecipeState = {
   recipes: [
     {
-      id: 1,
+      id: 0,
       title: "Омлет",
       subtitle: "Это классика, это знать надо!",
       picture: omelette,
@@ -33,7 +33,7 @@ const initialState: RecipeState = {
       ingredients: ["Молоко", "Яица"],
     },
     {
-      id: 2,
+      id: 1,
       title: "Салат Цезарь",
       subtitle: "Это классика, это знать надо!",
       picture: cesar,
@@ -48,7 +48,7 @@ const initialState: RecipeState = {
       ingredients: ["Зеленый салат", "Помидоры", "Куриное филе"],
     },
     {
-      id: 3,
+      id: 2,
       title: "Сытный кек",
       subtitle: "Это классика, это знать надо!",
       picture: omelette,
