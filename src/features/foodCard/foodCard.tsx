@@ -69,6 +69,13 @@ export const foodCard: FC = memo(() => {
 
           history.push("/recipe");
         }
+
+        if (action.type == "return_to_main_page") {
+          console.log("kek");
+
+          history.push("/");
+        }
+
         action = action as foodCardAction;
         console.log(action);
         dispatch(select_recipe(action.type));
