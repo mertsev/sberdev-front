@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useHistory } from "react-router-dom";
 import { AppThunk, RootState } from "../../app/store";
+import omelette from "../../img/omelette.png";
+import cesar from "../../img/cesar.png";
 
 type Recipe = {
   id: number;
@@ -21,7 +23,7 @@ const initialState: RecipeState = {
       id: 1,
       title: "Омлет",
       subtitle: "Это классика, это знать надо!",
-      picture: "./omelette.png",
+      picture: omelette,
       steps: [
         "Разбить яйца",
         "Смешать их с молоком",
@@ -34,7 +36,7 @@ const initialState: RecipeState = {
       id: 2,
       title: "Салат Цезарь",
       subtitle: "Это классика, это знать надо!",
-      picture: "./cesar.png",
+      picture: cesar,
       steps: [
         "Куриную грудку нарезать на кусочки приблизительно 1х3 см.",
         "Положить в сковороду к чесноку и маслу. ",
@@ -49,7 +51,7 @@ const initialState: RecipeState = {
       id: 3,
       title: "Сытный кек",
       subtitle: "Это классика, это знать надо!",
-      picture: "./omelette.png",
+      picture: omelette,
       steps: ["cook2", "kek2"],
       ingredients: ["kek", "bruh"],
     },

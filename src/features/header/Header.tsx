@@ -1,13 +1,15 @@
 import React from "react";
 import { Cell, CellIcon, Container, Header, TextBox } from "@sberdevices/ui";
 import { Link } from "react-router-dom";
+import logo from "../../img/logo.png";
+import sberkot from "../../img/sberkot_swag.png";
 
 function HeaderComponentFunction(): JSX.Element {
   return (
     <Container>
       <Header
         back={true}
-        logo="./logo.png"
+        logo={logo}
         logoAlt="Logo"
         title="Открой завтрак"
         subtitle="Какой бы завтрак выбрать..."
@@ -16,7 +18,7 @@ function HeaderComponentFunction(): JSX.Element {
       >
         <Link to={`/user/`}>
           <Cell
-            left={<CellIcon as="img" src="./sberkot_swag.png" alt="avocado" />}
+            left={<CellIcon as="img" src={sberkot} alt="user_pic" />}
             content={
               <TextBox title={"Сытый пользователь"} subTitle={"Lvl: 42"} />
             }
