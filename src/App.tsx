@@ -19,6 +19,7 @@ import { text, background, gradient } from "@sberdevices/plasma-tokens";
 import { foodCard } from "./features/foodCard/foodCard";
 import { recipePage } from "./features/recipePage/recipePage";
 import { recipeCarouselPage } from "./features/recipeCarousel/recipeCarousel";
+import { userCarousel } from "./features/user/userCarousel";
 
 const AppStyled = styled.div`
   ${body1}
@@ -53,7 +54,7 @@ function App(): JSX.Element {
         {/* <Route path="/" exact={true} component={toDo} /> */}
         <Route path="/" exact={true} component={foodCard} />
         <Route path="/recipe/:id" exact={true} component={recipePage} />
-        <Route path="/carousel" exact={true} component={recipeCarouselPage} />
+        <Route path="/user" exact={true} component={userCarousel} />
       </div>
     </AppStyled>
   );
