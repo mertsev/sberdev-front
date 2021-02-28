@@ -1,10 +1,17 @@
 # "Открой завтрак" frontend
+
 Frontend часть приложения "Открой завтрак"
 Разработано командой FintechSquad в рамках хакатона SberCode 2021
 
 Для работы ассистента необходимо обновить токен в .env
 
-##  Доступные команды
+## Доступные команды
+
+Установите необходимые зависимости
+
+### `npm install`
+
+Запустить проект в режиме разработтки
 
 ### `npm start`
 
@@ -13,7 +20,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
-
 
 ### `npm run build`
 
