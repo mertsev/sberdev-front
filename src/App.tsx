@@ -10,6 +10,7 @@ import { JobList } from "./features/jobList/JobList";
 import { JobForm } from "./features/jobForm/JobForm";
 import { HomePage } from "./features/homePage/homePage";
 import { toDo } from "./features/toDo/toDo";
+import { AssistantComponent } from "./features/assistant/assistant";
 
 import styled, { createGlobalStyle } from "styled-components";
 
@@ -55,6 +56,7 @@ function App(): JSX.Element {
         <DocStyles />
         <Theme />
         <HeaderComponent />
+        <AssistantComponent />
         <Route path="/" exact={true} component={toDo} />
         <Route path="/card" exact={true} component={foodCard} />
         <Route path="/recipe" exact={true} component={recipePage} />

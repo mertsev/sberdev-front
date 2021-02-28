@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Header } from "@sberdevices/ui";
 
-export function HeaderComponent(): JSX.Element {
+function HeaderComponentFunction(): JSX.Element {
   return (
     <Container>
       <Header
@@ -17,3 +17,5 @@ export function HeaderComponent(): JSX.Element {
     </Container>
   );
 }
+
+export const HeaderComponent = React.memo(HeaderComponentFunction);

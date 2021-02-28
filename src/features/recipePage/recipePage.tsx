@@ -42,17 +42,17 @@ import {
 import { accent, primary, text } from "@sberdevices/plasma-tokens";
 import { IconDone } from "@sberdevices/plasma-icons";
 
-const initializeAssistant = (getState: any) => {
-  if (process.env.NODE_ENV === "development") {
-    return createSmartappDebugger({
-      token: process.env.REACT_APP_TOKEN ?? "",
-      initPhrase: `Запусти ${process.env.REACT_APP_SMARTAPP}`,
-      getState,
-    });
-  }
+// const initializeAssistant = (getState: any) => {
+//   if (process.env.NODE_ENV === "development") {
+//     return createSmartappDebugger({
+//       token: process.env.REACT_APP_TOKEN ?? "",
+//       initPhrase: `Запусти ${process.env.REACT_APP_SMARTAPP}`,
+//       getState,
+//     });
+//   }
 
-  return createAssistant({ getState });
-};
+//   return createAssistant({ getState });
+// };
 
 type assistantAction = {
   type: string;
@@ -66,32 +66,32 @@ export const recipePage: FC = memo(() => {
 
   // const [note, setNote] = useState("");
   const note = "testNote";
-  const assistantStateRef = useRef<AssistantAppState>();
-  const assistantRef = useRef<ReturnType<typeof createAssistant>>();
+  // const assistantStateRef = useRef<AssistantAppState>();
+  // const assistantRef = useRef<ReturnType<typeof createAssistant>>();
 
-  useEffect(() => {
-    assistantRef.current = initializeAssistant(() => assistantStateRef.current);
+  // useEffect(() => {
+  //   assistantRef.current = initializeAssistant(() => assistantStateRef.current);
 
-    assistantRef.current.on("data", ({ action }: any) => {
-      if (action) {
-        action = action as assistantAction;
-        console.log(action);
-        dispatch(add_note(action.note));
-      }
-    });
-  }, []);
+  //   assistantRef.current.on("data", ({ action }: any) => {
+  //     if (action) {
+  //       action = action as assistantAction;
+  //       console.log(action);
+  //       dispatch(add_note(action.note));
+  //     }
+  //   });
+  // }, []);
 
-  useEffect(() => {
-    assistantStateRef.current = {
-      item_selector: {
-        items: toDo.notes.map(({ id, title }, index) => ({
-          number: index + 1,
-          id,
-          title,
-        })),
-      },
-    };
-  }, [toDo]);
+  // useEffect(() => {
+  //   assistantStateRef.current = {
+  //     item_selector: {
+  //       items: toDo.notes.map(({ id, title }, index) => ({
+  //         number: index + 1,
+  //         id,
+  //         title,
+  //       })),
+  //     },
+  //   };
+  // }, [toDo]);
 
   const items = [
     { "List items": "cock" },
