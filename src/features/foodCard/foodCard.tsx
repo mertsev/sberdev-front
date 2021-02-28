@@ -130,12 +130,13 @@ export const foodCard: FC = memo(() => {
           onIndexChange={(i) => setIndex(i)}
           style={{ paddingTop: "1.25rem", paddingBottom: "1.25rem" }}
         >
-          {items.map(({ title, subtitle }, i) => (
+          {items.map(({ title, subtitle, picture }, i) => (
             <CarouselCol
               key={`item:${i}`}
               size={3}
               sizeXL={4}
               scrollSnapAlign={"start"}
+              style={{ paddingLeft: "30px", paddingRight: "30px" }}
             >
               <Card
                 style={{ width: "22.5rem" }}
@@ -145,7 +146,7 @@ export const foodCard: FC = memo(() => {
               >
                 <CardBody>
                   <CardMedia
-                    src={"./sberkot_fat.png"}
+                    src={picture}
                     // placeholder="./images/320_320_1.jpg"
                     ratio={"1 / 2"}
                   />

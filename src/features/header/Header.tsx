@@ -11,6 +11,7 @@ function HeaderComponentFunction(): JSX.Element {
         title="All your base are belong to us"
         subtitle="Повар спрашивает повара..."
         onBackClick={() => console.log("Back click!")}
+        style={{ paddingTop: "30px", paddingBottom: "30px" }}
       >
         <div>Утренний поварёнок</div>
       </Header>
