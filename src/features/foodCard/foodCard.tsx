@@ -28,17 +28,7 @@ import {
   TextBoxBigTitle,
   TextBoxSubTitle,
 } from "@sberdevices/ui";
-import { text } from "@sberdevices/plasma-tokens";
-
-import { Carousel } from "@sberdevices/ui";
-
-const stylingCallback = (itemEl: HTMLDivElement, slot: number) => {
-  itemEl.style.opacity = `${1 - Math.abs(slot) / 2}`;
-};
-
-const stylingResetCallback = (itemEl: HTMLDivElement) => {
-  itemEl.style.opacity = "";
-};
+import { Redirect, useHistory } from "react-router-dom";
 
 const initializeAssistant = (getState: any) => {
   if (process.env.NODE_ENV === "development") {
@@ -52,12 +42,13 @@ const initializeAssistant = (getState: any) => {
   return createAssistant({ getState });
 };
 
-type assistantAction = {
+type foodCardAction = {
   type: string;
-  note?: string;
+  payload?: string;
 };
 
 export const foodCard: FC = memo(() => {
+  const history = useHistory();
   const toDo = useSelector(selectFoodCard);
   const dispatch = useDispatch();
   // const [appState, dispatch] = useReducer(reducer, { notes: [] });
@@ -71,10 +62,16 @@ export const foodCard: FC = memo(() => {
     assistantRef.current = initializeAssistant(() => assistantStateRef.current);
 
     assistantRef.current.on("data", ({ action }: any) => {
+      console.log(action);
       if (action) {
-        action = action as assistantAction;
+        if (action.type == "choose_recipe_by_id") {
+          console.log("kek");
+
+          history.push("/recipe");
+        }
+        action = action as foodCardAction;
         console.log(action);
-        dispatch(select_recipe(action.note));
+        dispatch(select_recipe(action.type));
       }
     });
   }, []);

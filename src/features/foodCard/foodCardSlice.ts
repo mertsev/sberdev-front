@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { useHistory } from "react-router-dom";
 import { AppThunk, RootState } from "../../app/store";
 
 type Recipe = {
@@ -32,11 +33,9 @@ export const foodCardSlice = createSlice({
   initialState,
   reducers: {
     select_recipe: (state, action: PayloadAction<string>) => {
-      //console.log(action);
-      state.recipes.push({
-        id: Math.random(),
-        title: action.payload,
-      });
+      // const history = useHistory();
+      console.log(action);
+      // history.push("/recipe");
     },
     // Use the PayloadAction type to declare the contents of `action.payload`
     // incrementByAmount: (state, action: PayloadAction<number>) => {

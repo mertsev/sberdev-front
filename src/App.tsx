@@ -2,8 +2,8 @@ import React from "react";
 import "./App.css";
 import { HeaderComponent } from "./features/header/Header";
 import { Route } from "react-router-dom";
-import { toDo } from "./features/toDo/toDo";
-import { AssistantComponent } from "./features/assistant/assistant";
+// import { toDo } from "./features/toDo/toDo";
+// import { AssistantComponent } from "./features/assistant/assistant";
 
 import styled, { createGlobalStyle } from "styled-components";
 
