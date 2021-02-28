@@ -100,6 +100,12 @@ export const foodCard: FC = memo(() => {
           history.push("/");
         }
 
+        if (action.type == "return_to_achievements_page") {
+          console.log("kek");
+
+          history.push("/user");
+        }
+
         console.log(action);
         dispatch(select_recipe(action.type));
       }
