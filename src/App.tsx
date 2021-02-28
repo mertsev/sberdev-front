@@ -21,7 +21,6 @@ import { recipePage } from "./features/recipePage/recipePage";
 import { recipeCarouselPage } from "./features/recipeCarousel/recipeCarousel";
 
 const AppStyled = styled.div`
-  padding: 30px;
   ${body1}
 `;
 

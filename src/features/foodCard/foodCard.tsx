@@ -69,12 +69,10 @@ export const foodCard: FC = memo(() => {
     max: items.length - 1,
   });
   const history = useHistory();
-  const toDo = useSelector(selectFoodCard);
   const dispatch = useDispatch();
   // const [appState, dispatch] = useReducer(reducer, { notes: [] });
 
   // const [note, setNote] = useState("");
-  const note = "testNote";
   const assistantStateRef = useRef<AssistantAppState>();
   const assistantRef = useRef<ReturnType<typeof createAssistant>>();
 

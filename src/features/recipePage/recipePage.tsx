@@ -28,6 +28,9 @@ import {
   CardBody,
   CardContent,
   CardMedia,
+  Carousel,
+  CarouselCol,
+  CarouselGridWrapper,
   Cell,
   CellDisclosure,
   CellIcon,
@@ -48,18 +51,6 @@ import { IconDone } from "@sberdevices/plasma-icons";
 import { selectFoodCard } from "../foodCard/foodCardSlice";
 import { useParams } from "react-router-dom";
 
-// const initializeAssistant = (getState: any) => {
-//   if (process.env.NODE_ENV === "development") {
-//     return createSmartappDebugger({
-//       token: process.env.REACT_APP_TOKEN ?? "",
-//       initPhrase: `Запусти ${process.env.REACT_APP_SMARTAPP}`,
-//       getState,
-//     });
-//   }
-
-//   return createAssistant({ getState });
-// };
-
 type assistantAction = {
   type: string;
   note?: string;
@@ -69,52 +60,63 @@ export const recipePage: FC = memo(() => {
   const { id } = useParams<{ id: string }>();
   const toDo = useSelector(selectToDo);
   const dispatch = useDispatch();
-  // const [appState, dispatch] = useReducer(reducer, { notes: [] });
-
-  // const [note, setNote] = useState("");
   const note = "testNote";
-  // const assistantStateRef = useRef<AssistantAppState>();
-  // const assistantRef = useRef<ReturnType<typeof createAssistant>>();
-
-  // useEffect(() => {
-  //   assistantRef.current = initializeAssistant(() => assistantStateRef.current);
-
-  //   assistantRef.current.on("data", ({ action }: any) => {
-  //     if (action) {
-  //       action = action as assistantAction;
-  //       console.log(action);
-  //       dispatch(add_note(action.note));
-  //     }
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   assistantStateRef.current = {
-  //     item_selector: {
-  //       items: toDo.notes.map(({ id, title }, index) => ({
-  //         number: index + 1,
-  //         id,
-  //         title,
-  //       })),
-  //     },
-  //   };
-  // }, [toDo]);
-
-  // const items = [
-  //   { title: "Item 1", subtitle: "Ekek" },
-  //   { title: "Item 2", subtitle: "Ekek" },
-  //   { title: "Item 3", subtitle: "Ekek" },
-  //   { title: "Item 4", subtitle: "Ekek" },
-  // ];
   const recipes = useSelector(selectFoodCard);
   const item = recipes.recipes[Number(id)];
 
+  const axis = "x";
+
+  const stepsCols: Array<Array<string>> = item.steps.reduce(function (
+    rows: any,
+    key,
+    index
+  ) {
+    return (
+      (index % 4 == 0 ? rows.push([key]) : rows[rows.length - 1].push(key)) &&
+      rows
+    );
+  },
+  []);
+
+  const [index, setIndex] = useRemoteHandlers({
+    initialIndex: 0,
+    axis,
+    delay: 30,
+    longDelay: 150,
+    min: 0,
+    max: stepsCols.length,
+  });
+
   return (
     <>
-      <Container>
-        <Row>
-          <Col size={10} sizeXL={5}>
-            <Card style={{ marginBottom: "30px" }}>
+      <CarouselGridWrapper>
+        <Carousel
+          as={Row}
+          axis={axis}
+          index={index}
+          animatedScrollByIndex={true}
+          scrollAlign={"start"}
+          scrollSnapType={"mandatory"}
+          detectActive={true}
+          detectThreshold={0.5}
+          onIndexChange={(i) => setIndex(i)}
+          style={{ paddingTop: "1.25rem", paddingBottom: "1.25rem" }}
+        >
+          <CarouselCol
+            key={`ingredients:1`}
+            scrollSnapAlign={"start"}
+            sizeXL={10}
+            style={{
+              paddingLeft: "30px",
+              paddingRight: "30px",
+            }}
+          >
+            <Card
+              style={{ marginBottom: "30px", width: "30rem" }}
+              tabIndex={-1}
+              outlined={true}
+              scaleOnFocus={true}
+            >
               <CardContent compact>
                 <Cell
                   content={<TextBoxBigTitle>{"Ингредиенты"}</TextBoxBigTitle>}
@@ -145,42 +147,55 @@ export const recipePage: FC = memo(() => {
                 ))}
               </CardContent>
             </Card>
-          </Col>
-          <Col sizeXL={7} size={10}>
-            <Card style={{ boxSizing: "border-box" }}>
-              <CardContent compact>
-                <Cell
-                  content={<TextBoxBigTitle>{"Шаги"}</TextBoxBigTitle>}
-                  // right={<span style={{ marginTop: 5 }}>{"Detail"}</span>}
-                />
-                {item.steps.map((step, i) => (
-                  <CellListItem
-                    key={`item:${i}`}
-                    left={
-                      <CellIcon>
-                        {/* <IconPlaceholder size={2.25} /> */}
-                      </CellIcon>
-                    }
-                    content={
-                      <>
-                        <MarkedItem style={{ color: primary }}>
-                          <IconDone size="xs" color={accent} />
-                          {step}
-                        </MarkedItem>
-                      </>
-                      // <TextBox>
-                      //   <TextBoxTitle>{"bruh"}</TextBoxTitle>
-                      //   <TextBoxSubTitle>{"Subtitle"}</TextBoxSubTitle>
-                      // </TextBox>
-                    }
-                    // right={<CellDisclosure />}
+          </CarouselCol>
+          {stepsCols.map((steps, i) => (
+            <CarouselCol
+              key={`step:${i}`}
+              scrollSnapAlign={"start"}
+              style={{ paddingLeft: "30px", paddingRight: "30px" }}
+            >
+              <Card
+                style={{
+                  width: "30rem",
+                }}
+                tabIndex={-1}
+                outlined={true}
+                scaleOnFocus={true}
+              >
+                <CardContent compact>
+                  <Cell
+                    content={<TextBoxBigTitle>{"Шаги"}</TextBoxBigTitle>}
+                    // right={<span style={{ marginTop: 5 }}>{"Detail"}</span>}
                   />
-                ))}
-              </CardContent>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+                  {steps.map((step, i) => (
+                    <CellListItem
+                      key={`item:${i}`}
+                      left={
+                        <CellIcon>
+                          {/* <IconPlaceholder size={2.25} /> */}
+                        </CellIcon>
+                      }
+                      content={
+                        <>
+                          <MarkedItem style={{ color: primary }}>
+                            <IconDone size="xs" color={accent} />
+                            {step}
+                          </MarkedItem>
+                        </>
+                        // <TextBox>
+                        //   <TextBoxTitle>{"bruh"}</TextBoxTitle>
+                        //   <TextBoxSubTitle>{"Subtitle"}</TextBoxSubTitle>
+                        // </TextBox>
+                      }
+                      // right={<CellDisclosure />}
+                    />
+                  ))}
+                </CardContent>
+              </Card>
+            </CarouselCol>
+          ))}
+        </Carousel>
+      </CarouselGridWrapper>{" "}
     </>
   );
 });
