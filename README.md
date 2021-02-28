@@ -1,8 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# "Открой завтрак" frontend
+Frontend часть приложения "Открой завтрак"
+Разработано командой FintechSquad в рамках хакатона SberCode 2021
 
-## Available Scripts
+Для работы ассистента необходимо обновить токен в .env
 
-In the project directory, you can run:
+##  Доступные команды
 
 ### `npm start`
 
@@ -12,10 +14,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
@@ -26,11 +24,3 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-## unfinished/todo:
-
-- full redux action cicle for components (load/load fail/etc)
-- full test coverage
-- single interface source for ts
-- env variables for backend address
-- proper input selectors
