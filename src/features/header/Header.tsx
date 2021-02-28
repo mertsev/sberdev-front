@@ -6,9 +6,9 @@ function HeaderComponentFunction(): JSX.Element {
     <Container>
       <Header
         back={true}
-        logo="./sberkot_swag.png"
+        logo="./logo.png"
         logoAlt="Logo"
-        title="Ранний гастроэнтузиаст"
+        title="Открой завтрак"
         subtitle="Какой бы завтрак выбрать..."
         onBackClick={() => console.log("Back click!")}
         style={{ paddingTop: "30px", paddingBottom: "30px" }}

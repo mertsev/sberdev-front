@@ -162,7 +162,7 @@ export const foodCard: FC = memo(() => {
                         scaleOnInteraction={false}
                         outlined={false}
                         // fullWidth
-                        style={{ marginTop: "1em" }}
+                        style={{ marginTop: "1em", textDecoration: "none" }}
                         tabIndex={-1}
                       />
                     </Link>
