@@ -42,6 +42,7 @@ import {
 } from "@sberdevices/ui";
 import { accent, primary, text } from "@sberdevices/plasma-tokens";
 import { IconDone } from "@sberdevices/plasma-icons";
+import { selectFoodCard } from "../foodCard/foodCardSlice";
 
 // const initializeAssistant = (getState: any) => {
 //   if (process.env.NODE_ENV === "development") {
@@ -94,12 +95,14 @@ export const recipePage: FC = memo(() => {
   //   };
   // }, [toDo]);
 
-  const items = [
-    { title: "Item 1", subtitle: "Ekek" },
-    { title: "Item 2", subtitle: "Ekek" },
-    { title: "Item 3", subtitle: "Ekek" },
-    { title: "Item 4", subtitle: "Ekek" },
-  ];
+  // const items = [
+  //   { title: "Item 1", subtitle: "Ekek" },
+  //   { title: "Item 2", subtitle: "Ekek" },
+  //   { title: "Item 3", subtitle: "Ekek" },
+  //   { title: "Item 4", subtitle: "Ekek" },
+  // ];
+  const recipes = useSelector(selectFoodCard);
+  const items = recipes.recipes;
 
   const axis = "x";
 
@@ -120,7 +123,7 @@ export const recipePage: FC = memo(() => {
             content={<TextBoxBigTitle>{"Ингредиенты"}</TextBoxBigTitle>}
             // right={<span style={{ marginTop: 5 }}>{"Detail"}</span>}
           />
-          {items.map((_, i) => (
+          {items.map(({ steps, ingredients }, i) => (
             <CellListItem
               key={`item:${i}`}
               left={
@@ -130,6 +133,7 @@ export const recipePage: FC = memo(() => {
                 <>
                   <MarkedItem text="Дмитрий гордон" style={{ color: primary }}>
                     <IconDone size="xs" color={accent} />
+                    {steps} {ingredients}
                   </MarkedItem>
                 </>
                 // <TextBox>
