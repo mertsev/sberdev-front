@@ -126,15 +126,10 @@ export const userCarousel: FC = memo(() => {
                 scaleOnFocus={true}
               >
                 <CardBody>
-                  <CardMedia
-                    src={picture}
-                    // placeholder="./images/320_320_1.jpg"
-                    ratio={"1 / 2"}
-                  />
+                  <CardMedia src={picture} ratio={"1 / 2"} />
                   <CardContent>
                     <TextBox>
                       <TextBoxBigTitle>{title}</TextBoxBigTitle>
-                      {/* <TextBoxBiggerTitle>{subtitle}</TextBoxBiggerTitle> */}
                       <TextBoxSubTitle>{description}</TextBoxSubTitle>
                     </TextBox>
                   </CardContent>

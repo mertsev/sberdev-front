@@ -53,8 +53,6 @@ type assistantAction = {
 
 export const recipePage: FC = memo(() => {
   const { id } = useParams<{ id: string }>();
-  const dispatch = useDispatch();
-  const note = "testNote";
   const recipes = useSelector(selectFoodCard);
   const item = recipes.recipes[Number(id)];
 
@@ -131,12 +129,7 @@ export const recipePage: FC = memo(() => {
                           {ingredient}
                         </MarkedItem>
                       </>
-                      // <TextBox>
-                      //   <TextBoxTitle>{"bruh"}</TextBoxTitle>
-                      //   <TextBoxSubTitle>{"Subtitle"}</TextBoxSubTitle>
-                      // </TextBox>
                     }
-                    // right={<CellDisclosure />}
                   />
                 ))}
               </CardContent>
@@ -176,12 +169,7 @@ export const recipePage: FC = memo(() => {
                             {step}
                           </MarkedItem>
                         </>
-                        // <TextBox>
-                        //   <TextBoxTitle>{"bruh"}</TextBoxTitle>
-                        //   <TextBoxSubTitle>{"Subtitle"}</TextBoxSubTitle>
-                        // </TextBox>
                       }
-                      // right={<CellDisclosure />}
                     />
                   ))}
                 </CardContent>

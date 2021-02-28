@@ -11,7 +11,6 @@ import {
   createAssistant,
   AssistantAppState,
 } from "@sberdevices/assistant-client";
-import "./foodCard.css";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -70,9 +69,7 @@ export const foodCard: FC = memo(() => {
   });
   const history = useHistory();
   const dispatch = useDispatch();
-  // const [appState, dispatch] = useReducer(reducer, { notes: [] });
 
-  // const [note, setNote] = useState("");
   const assistantStateRef = useRef<AssistantAppState>();
   const assistantRef = useRef<ReturnType<typeof createAssistant>>();
 
@@ -112,18 +109,6 @@ export const foodCard: FC = memo(() => {
     });
   }, []);
 
-  // useEffect(() => {
-  //   assistantStateRef.current = {
-  //     item_selector: {
-  //       items: toDo.notes.map(({ id, title }, index) => ({
-  //         number: index + 1,
-  //         id,
-  //         title,
-  //       })),
-  //     },
-  //   };
-  // }, [toDo]);
-
   return (
     <>
       <CarouselGridWrapper>
@@ -154,15 +139,10 @@ export const foodCard: FC = memo(() => {
                 scaleOnFocus={true}
               >
                 <CardBody>
-                  <CardMedia
-                    src={picture}
-                    // placeholder="./images/320_320_1.jpg"
-                    ratio={"1 / 2"}
-                  />
+                  <CardMedia src={picture} ratio={"1 / 2"} />
                   <CardContent>
                     <TextBox>
                       <TextBoxBigTitle>{title}</TextBoxBigTitle>
-                      {/* <TextBoxBiggerTitle>{subtitle}</TextBoxBiggerTitle> */}
                       <TextBoxSubTitle>{subtitle}</TextBoxSubTitle>
                     </TextBox>
                     <Link to={`/recipe/${i}`}>

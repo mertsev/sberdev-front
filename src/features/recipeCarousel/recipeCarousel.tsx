@@ -11,7 +11,6 @@ import {
   createAssistant,
   AssistantAppState,
 } from "@sberdevices/assistant-client";
-import "./recipeCarousel.css";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -35,15 +34,6 @@ import {
   TextBoxSubTitle,
   useRemoteHandlers,
 } from "@sberdevices/ui";
-import { text } from "@sberdevices/plasma-tokens";
-
-const stylingCallback = (itemEl: HTMLDivElement, slot: number) => {
-  itemEl.style.opacity = `${1 - Math.abs(slot) / 2}`;
-};
-
-const stylingResetCallback = (itemEl: HTMLDivElement) => {
-  itemEl.style.opacity = "";
-};
 
 const initializeAssistant = (getState: any) => {
   if (process.env.NODE_ENV === "development") {
@@ -63,12 +53,8 @@ type assistantAction = {
 };
 
 export const recipeCarouselPage: FC = memo(() => {
-  const toDo = useSelector(selectFoodCard);
   const dispatch = useDispatch();
-  // const [appState, dispatch] = useReducer(reducer, { notes: [] });
 
-  // const [note, setNote] = useState("");
-  const note = "testNote";
   const assistantStateRef = useRef<AssistantAppState>();
   const assistantRef = useRef<ReturnType<typeof createAssistant>>();
 
