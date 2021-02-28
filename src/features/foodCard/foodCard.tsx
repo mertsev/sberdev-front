@@ -51,7 +51,7 @@ const initializeAssistant = (getState: any) => {
 
 type foodCardAction = {
   type: string;
-  payload?: string;
+  name?: string;
 };
 
 export const foodCard: FC = memo(() => {
@@ -82,10 +82,13 @@ export const foodCard: FC = memo(() => {
     assistantRef.current.on("data", ({ action }: any) => {
       console.log(action);
       if (action) {
-        if (action.type == "choose_recipe_by_id") {
+        action = action as foodCardAction;
+        if (action.type == "choose_recipe_by_name") {
           console.log("kek");
+          const id =
+            items.filter((item) => item.title == action.name)[0]?.id || 0;
 
-          history.push("/recipe/1");
+          history.push(`/recipe/${id}`);
         }
 
         if (action.type == "return_to_main_page") {
@@ -94,7 +97,6 @@ export const foodCard: FC = memo(() => {
           history.push("/");
         }
 
-        action = action as foodCardAction;
         console.log(action);
         dispatch(select_recipe(action.type));
       }
