@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useHistory } from "react-router-dom";
 import { AppThunk, RootState } from "../../app/store";
+import sberkot1 from "../../img/sberkot_fat.png";
+import sberkot2 from "../../img/sberkot_swag.png";
 
 type Achievement = {
   id: number;
@@ -19,13 +21,13 @@ const initialState: AchievementState = {
       id: 1,
       title: "Любитель цезаря",
       description: "Приготовили первый цезарь, поздравляем!",
-      picture: "./sberkot_fat",
+      picture: sberkot1,
     },
     {
       id: 2,
       title: "Желтый кружок",
       description: "Вы мастер яичницы!",
-      picture: "./public/sberkot_fat",
+      picture: sberkot2,
     },
   ],
 };
