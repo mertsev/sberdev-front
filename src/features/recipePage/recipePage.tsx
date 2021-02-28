@@ -46,6 +46,7 @@ import {
 import { accent, primary, text } from "@sberdevices/plasma-tokens";
 import { IconDone } from "@sberdevices/plasma-icons";
 import { selectFoodCard } from "../foodCard/foodCardSlice";
+import { useParams } from "react-router-dom";
 
 // const initializeAssistant = (getState: any) => {
 //   if (process.env.NODE_ENV === "development") {
@@ -65,6 +66,7 @@ type assistantAction = {
 };
 
 export const recipePage: FC = memo(() => {
+  const { id } = useParams<{ id: string }>();
   const toDo = useSelector(selectToDo);
   const dispatch = useDispatch();
   // const [appState, dispatch] = useReducer(reducer, { notes: [] });
@@ -105,7 +107,7 @@ export const recipePage: FC = memo(() => {
   //   { title: "Item 4", subtitle: "Ekek" },
   // ];
   const recipes = useSelector(selectFoodCard);
-  const item = recipes.recipes[0];
+  const item = recipes.recipes[Number(id)];
 
   return (
     <>

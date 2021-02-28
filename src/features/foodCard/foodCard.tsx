@@ -35,7 +35,7 @@ import {
   TextBoxSubTitle,
   useRemoteHandlers,
 } from "@sberdevices/ui";
-import { Redirect, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 
 const initializeAssistant = (getState: any) => {
   if (process.env.NODE_ENV === "development") {
@@ -87,7 +87,7 @@ export const foodCard: FC = memo(() => {
         if (action.type == "choose_recipe_by_id") {
           console.log("kek");
 
-          history.push("/recipe");
+          history.push("/recipe/1");
         }
 
         if (action.type == "return_to_main_page") {
@@ -156,16 +156,18 @@ export const foodCard: FC = memo(() => {
                       {/* <TextBoxBiggerTitle>{subtitle}</TextBoxBiggerTitle> */}
                       <TextBoxSubTitle>{subtitle}</TextBoxSubTitle>
                     </TextBox>
-                    <Button
-                      text="Приготовить"
-                      view="primary"
-                      size="s"
-                      scaleOnInteraction={false}
-                      outlined={false}
-                      // fullWidth
-                      style={{ marginTop: "1em" }}
-                      tabIndex={-1}
-                    />
+                    <Link to={`/recipe/${i}`}>
+                      <Button
+                        text="Приготовить"
+                        view="primary"
+                        size="s"
+                        scaleOnInteraction={false}
+                        outlined={false}
+                        // fullWidth
+                        style={{ marginTop: "1em" }}
+                        tabIndex={-1}
+                      />
+                    </Link>
                   </CardContent>
                 </CardBody>
               </Card>

@@ -53,7 +53,7 @@ function App(): JSX.Element {
         {/* <AssistantComponent /> */}
         {/* <Route path="/" exact={true} component={toDo} /> */}
         <Route path="/" exact={true} component={foodCard} />
-        <Route path="/recipe" exact={true} component={recipePage} />
+        <Route path="/recipe/:id" exact={true} component={recipePage} />
         <Route path="/carousel" exact={true} component={recipeCarouselPage} />
       </div>
     </AppStyled>
