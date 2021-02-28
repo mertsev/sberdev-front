@@ -56,9 +56,9 @@ function App(): JSX.Element {
         <DocStyles />
         <Theme />
         <HeaderComponent />
-        <AssistantComponent />
-        <Route path="/" exact={true} component={toDo} />
-        <Route path="/card" exact={true} component={foodCard} />
+        {/* <AssistantComponent /> */}
+        {/* <Route path="/" exact={true} component={toDo} /> */}
+        <Route path="/" exact={true} component={foodCard} />
         <Route path="/recipe" exact={true} component={recipePage} />
         {/* <Route path="/" exact={true} component={HomePage} /> */}
         {/* <Route path="/appliance/view/:id" exact={true} component={Appliance} />

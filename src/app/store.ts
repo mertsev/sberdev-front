@@ -6,6 +6,7 @@ import applianceFormReducer from "../features/applianceForm/applianceFormSlice";
 import jobReducer from "../features/job/jobSlice";
 import jobListReducer from "../features/jobList/jobListSlice";
 import toDoReducer from "../features/toDo/toDoSlice";
+import foodCardReducer from "../features/foodCard/foodCardSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     job: jobReducer,
     jobList: jobListReducer,
     toDoList: toDoReducer,
+    foodCard: foodCardReducer,
   },
 });
 

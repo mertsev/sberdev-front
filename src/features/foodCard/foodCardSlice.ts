@@ -1,51 +1,42 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk, RootState } from "../../app/store";
 
-type Note = {
-  id: string;
+type Recipe = {
+  id: number;
   title: string;
-  completed: boolean;
 };
 
-type NotesState = {
-  notes: Note[];
+type RecipeState = {
+  recipes: Recipe[];
 };
 
-const initialState: NotesState = {
-  notes: [
+const initialState: RecipeState = {
+  recipes: [
     {
-      id: "none",
-      title: "testzametka",
-      completed: false,
+      id: 1,
+      title: "Омлет",
+    },
+    {
+      id: 2,
+      title: "Салат Цезарь",
+    },
+    {
+      id: 3,
+      title: "Сытный дед",
     },
   ],
 };
 
-export const ToDoSlice = createSlice({
-  name: "ToDo",
+export const foodCardSlice = createSlice({
+  name: "foodCard",
   initialState,
   reducers: {
-    add_note: (state, action: PayloadAction<string>) => {
+    select_recipe: (state, action: PayloadAction<string>) => {
       //console.log(action);
-      state.notes.push({
-        id: Math.random().toString(36).substring(7),
+      state.recipes.push({
+        id: Math.random(),
         title: action.payload,
-        completed: false,
       });
-    },
-    done_note: (state, action: PayloadAction<Note>) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      state.notes.push({
-        id: Math.random().toString(36).substring(7),
-        title: action.payload.title,
-        completed: false,
-      });
-    },
-    delete_note: (state, action: PayloadAction<Note>) => {
-      state.notes.filter(({ id }) => id !== action.payload.id);
     },
     // Use the PayloadAction type to declare the contents of `action.payload`
     // incrementByAmount: (state, action: PayloadAction<number>) => {
@@ -54,7 +45,7 @@ export const ToDoSlice = createSlice({
   },
 });
 
-export const { add_note, done_note, delete_note } = ToDoSlice.actions;
+export const { select_recipe } = foodCardSlice.actions;
 
 // export const fetchJob = (_id: string): AppThunk => async (dispatch) => {
 //   try {
@@ -110,6 +101,6 @@ export const { add_note, done_note, delete_note } = ToDoSlice.actions;
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.Job.value)`
-export const selectToDo = (state: RootState) => state.toDoList;
+export const selectFoodCard = (state: RootState) => state.foodCard;
 
-export default ToDoSlice.reducer;
+export default foodCardSlice.reducer;

@@ -16,7 +16,7 @@ import "./foodCard.css";
 import { useSelector, useDispatch } from "react-redux";
 
 // import { reducer } from "./store";
-import { add_note, done_note, delete_note, selectToDo } from "./foodCardSlice";
+import { select_recipe, selectFoodCard } from "./foodCardSlice";
 import {
   Button,
   Card,
@@ -30,25 +30,35 @@ import {
 } from "@sberdevices/ui";
 import { text } from "@sberdevices/plasma-tokens";
 
-// const initializeAssistant = (getState: any) => {
-//   if (process.env.NODE_ENV === "development") {
-//     return createSmartappDebugger({
-//       token: process.env.REACT_APP_TOKEN ?? "",
-//       initPhrase: `Запусти ${process.env.REACT_APP_SMARTAPP}`,
-//       getState,
-//     });
-//   }
+import { Carousel } from "@sberdevices/ui";
 
-//   return createAssistant({ getState });
-// };
+const stylingCallback = (itemEl: HTMLDivElement, slot: number) => {
+  itemEl.style.opacity = `${1 - Math.abs(slot) / 2}`;
+};
 
-// type assistantAction = {
-//   type: string;
-//   note?: string;
-// };
+const stylingResetCallback = (itemEl: HTMLDivElement) => {
+  itemEl.style.opacity = "";
+};
+
+const initializeAssistant = (getState: any) => {
+  if (process.env.NODE_ENV === "development") {
+    return createSmartappDebugger({
+      token: process.env.REACT_APP_TOKEN ?? "",
+      initPhrase: `Запусти ${process.env.REACT_APP_SMARTAPP}`,
+      getState,
+    });
+  }
+
+  return createAssistant({ getState });
+};
+
+type assistantAction = {
+  type: string;
+  note?: string;
+};
 
 export const foodCard: FC = memo(() => {
-  const toDo = useSelector(selectToDo);
+  const toDo = useSelector(selectFoodCard);
   const dispatch = useDispatch();
   // const [appState, dispatch] = useReducer(reducer, { notes: [] });
 
@@ -57,17 +67,17 @@ export const foodCard: FC = memo(() => {
   const assistantStateRef = useRef<AssistantAppState>();
   const assistantRef = useRef<ReturnType<typeof createAssistant>>();
 
-  // useEffect(() => {
-  //   assistantRef.current = initializeAssistant(() => assistantStateRef.current);
+  useEffect(() => {
+    assistantRef.current = initializeAssistant(() => assistantStateRef.current);
 
-  //   assistantRef.current.on("data", ({ action }: any) => {
-  //     if (action) {
-  //       action = action as assistantAction;
-  //       console.log(action);
-  //       dispatch(add_note(action.note));
-  //     }
-  //   });
-  // }, []);
+    assistantRef.current.on("data", ({ action }: any) => {
+      if (action) {
+        action = action as assistantAction;
+        console.log(action);
+        dispatch(select_recipe(action.note));
+      }
+    });
+  }, []);
 
   // useEffect(() => {
   //   assistantStateRef.current = {
