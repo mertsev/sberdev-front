@@ -23,10 +23,17 @@ import {
   CardBody,
   CardContent,
   CardMedia,
+  Carousel,
+  CarouselCol,
+  CarouselGridWrapper,
+  CarouselItem,
+  Col,
+  Row,
   TextBox,
   TextBoxBiggerTitle,
   TextBoxBigTitle,
   TextBoxSubTitle,
+  useRemoteHandlers,
 } from "@sberdevices/ui";
 import { Redirect, useHistory } from "react-router-dom";
 
@@ -48,6 +55,19 @@ type foodCardAction = {
 };
 
 export const foodCard: FC = memo(() => {
+  const recipes = useSelector(selectFoodCard);
+  const items = recipes.recipes;
+
+  const axis = "x";
+
+  const [index, setIndex] = useRemoteHandlers({
+    initialIndex: 0,
+    axis,
+    delay: 30,
+    longDelay: 150,
+    min: 0,
+    max: items.length - 1,
+  });
   const history = useHistory();
   const toDo = useSelector(selectFoodCard);
   const dispatch = useDispatch();
@@ -97,69 +117,61 @@ export const foodCard: FC = memo(() => {
 
   return (
     <>
-      <Card
-        style={{ width: "22.5rem" }}
-        tabIndex={-1}
-        outlined={true}
-        scaleOnFocus={true}
-      >
-        <CardBody>
-          <CardMedia
-            src="./sberkot_fat.png"
-            // placeholder="./images/320_320_1.jpg"
-            ratio={"16 / 9"}
-          />
-          <CardContent>
-            <TextBox>
-              <TextBoxBigTitle>{"Потребительский кредит"}</TextBoxBigTitle>
-              <TextBoxBiggerTitle>{"до 420 000 ₽"}</TextBoxBiggerTitle>
-              <TextBoxSubTitle>{"На 69 месяцев, ставка 14,8%"}</TextBoxSubTitle>
-            </TextBox>
-            <Button
-              text="Label"
-              view="primary"
-              size="s"
-              scaleOnInteraction={false}
-              outlined={false}
-              // fullWidth
-              style={{ marginTop: "1em" }}
-              tabIndex={-1}
-            />
-          </CardContent>
-        </CardBody>
-      </Card>
-
-      <Card
-        style={{ width: "22.5rem" }}
-        tabIndex={-1}
-        outlined={true}
-        scaleOnFocus={true}
-      >
-        <CardBody>
-          <CardMedia
-            src="./sberkot_fat.png"
-            // placeholder="./images/320_320_1.jpg"
-            ratio={"16 / 9"}
-          />
-          <CardContent>
-            <TextBox>
-              <TextBoxBigTitle>{"Потребительский кредит"}</TextBoxBigTitle>
-              <TextBoxBiggerTitle>{"до 420 000 ₽"}</TextBoxBiggerTitle>
-              <TextBoxSubTitle>{"На 69 месяцев, ставка 14,8%"}</TextBoxSubTitle>
-            </TextBox>
-            <Button
-              text="Label"
-              view="primary"
-              size="s"
-              scaleOnInteraction={false}
-              outlined={false}
-              // fullWidth
-              style={{ marginTop: "1em" }}
-              tabIndex={-1}
-            />
-          </CardContent>
-        </CardBody>
-      </Card>
+      <CarouselGridWrapper>
+        <Carousel
+          as={Row}
+          axis={axis}
+          index={index}
+          animatedScrollByIndex={true}
+          scrollAlign={"start"}
+          scrollSnapType={"mandatory"}
+          detectActive={true}
+          detectThreshold={0.5}
+          onIndexChange={(i) => setIndex(i)}
+          style={{ paddingTop: "1.25rem", paddingBottom: "1.25rem" }}
+        >
+          {items.map(({ title, subtitle }, i) => (
+            <CarouselCol
+              key={`item:${i}`}
+              size={3}
+              sizeXL={4}
+              scrollSnapAlign={"start"}
+            >
+              <Card
+                style={{ width: "22.5rem" }}
+                tabIndex={-1}
+                outlined={true}
+                scaleOnFocus={true}
+              >
+                <CardBody>
+                  <CardMedia
+                    src="./sberkot_fat.png"
+                    // placeholder="./images/320_320_1.jpg"
+                    ratio={"1 / 2"}
+                  />
+                  <CardContent>
+                    <TextBox>
+                      <TextBoxBigTitle>{title}</TextBoxBigTitle>
+                      {/* <TextBoxBiggerTitle>{subtitle}</TextBoxBiggerTitle> */}
+                      <TextBoxSubTitle>{subtitle}</TextBoxSubTitle>
+                    </TextBox>
+                    <Button
+                      text="Приготовить"
+                      view="primary"
+                      size="s"
+                      scaleOnInteraction={false}
+                      outlined={false}
+                      // fullWidth
+                      style={{ marginTop: "1em" }}
+                      tabIndex={-1}
+                    />
+                  </CardContent>
+                </CardBody>
+              </Card>
+            </CarouselCol>
+          ))}
+        </Carousel>
+      </CarouselGridWrapper>{" "}
     </>
   );
 });

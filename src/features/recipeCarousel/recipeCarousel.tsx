@@ -134,12 +134,12 @@ export const recipeCarouselPage: FC = memo(() => {
                   <CardMedia
                     src="./sberkot_fat.png"
                     // placeholder="./images/320_320_1.jpg"
-                    ratio={"16 / 9"}
+                    ratio={"1 / 2"}
                   />
                   <CardContent>
                     <TextBox>
                       <TextBoxBigTitle>{title}</TextBoxBigTitle>
-                      <TextBoxBiggerTitle>{subtitle}</TextBoxBiggerTitle>
+                      {/* <TextBoxBiggerTitle>{subtitle}</TextBoxBiggerTitle> */}
                       <TextBoxSubTitle>
                         {"На 69 месяцев, ставка 14,8%"}
                       </TextBoxSubTitle>

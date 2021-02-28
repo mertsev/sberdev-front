@@ -38,6 +38,7 @@ import {
   TextBoxBigTitle,
   TextBoxSubTitle,
   TextBoxTitle,
+  useRemoteHandlers,
 } from "@sberdevices/ui";
 import { accent, primary, text } from "@sberdevices/plasma-tokens";
 import { IconDone } from "@sberdevices/plasma-icons";
@@ -94,11 +95,22 @@ export const recipePage: FC = memo(() => {
   // }, [toDo]);
 
   const items = [
-    { "List items": "cock" },
-    { "List items": "cock" },
-    { "List items": "cock" },
-    { "List items": "cock" },
+    { title: "Item 1", subtitle: "Ekek" },
+    { title: "Item 2", subtitle: "Ekek" },
+    { title: "Item 3", subtitle: "Ekek" },
+    { title: "Item 4", subtitle: "Ekek" },
   ];
+
+  const axis = "x";
+
+  const [index, setIndex] = useRemoteHandlers({
+    initialIndex: 0,
+    axis,
+    delay: 30,
+    longDelay: 150,
+    min: 0,
+    max: items.length - 1,
+  });
 
   return (
     <>

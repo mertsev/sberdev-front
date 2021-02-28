@@ -5,6 +5,7 @@ import { AppThunk, RootState } from "../../app/store";
 type Recipe = {
   id: number;
   title: string;
+  subtitle: string;
 };
 
 type RecipeState = {
@@ -16,14 +17,17 @@ const initialState: RecipeState = {
     {
       id: 1,
       title: "Омлет",
+      subtitle: "Это классика, это знать надо!",
     },
     {
       id: 2,
       title: "Салат Цезарь",
+      subtitle: "Это классика, это знать надо!",
     },
     {
       id: 3,
       title: "Сытный дед",
+      subtitle: "Это классика, это знать надо!",
     },
   ],
 };
