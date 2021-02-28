@@ -16,12 +16,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 
 // import { reducer } from "./store";
-import {
-  add_note,
-  done_note,
-  delete_note,
-  selectToDo,
-} from "./recipePageSlice";
+// import { select_recipe } from "../recipeCarousel/recipeCarouselSlice";
 import {
   Button,
   Card,
@@ -58,7 +53,6 @@ type assistantAction = {
 
 export const recipePage: FC = memo(() => {
   const { id } = useParams<{ id: string }>();
-  const toDo = useSelector(selectToDo);
   const dispatch = useDispatch();
   const note = "testNote";
   const recipes = useSelector(selectFoodCard);

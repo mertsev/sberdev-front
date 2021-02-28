@@ -1,11 +1,9 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import toDoReducer from "../features/toDo/toDoSlice";
 import foodCardReducer from "../features/foodCard/foodCardSlice";
 import userAchievementsReducer from "../features/user/userCarouselSlice";
 
 export const store = configureStore({
   reducer: {
-    toDoList: toDoReducer,
     foodCard: foodCardReducer,
     userCarousel: userAchievementsReducer,
   },
