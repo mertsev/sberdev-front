@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Header } from "@sberdevices/ui";
+import { Cell, CellIcon, Container, Header, TextBox } from "@sberdevices/ui";
 
 function HeaderComponentFunction(): JSX.Element {
   return (
@@ -8,12 +8,17 @@ function HeaderComponentFunction(): JSX.Element {
         back={true}
         logo="./sberkot_swag.png"
         logoAlt="Logo"
-        title="All your base are belong to us"
-        subtitle="Повар спрашивает повара..."
+        title="Ранний гастроэнтузиаст"
+        subtitle="Какой бы завтрак выбрать..."
         onBackClick={() => console.log("Back click!")}
         style={{ paddingTop: "30px", paddingBottom: "30px" }}
       >
-        <div>Утренний поварёнок</div>
+        <Cell
+          left={<CellIcon as="img" src="./sberkot_swag.png" alt="avocado" />}
+          content={
+            <TextBox title={"Сытый пользователь"} subTitle={"Lvl: 42"} />
+          }
+        />
       </Header>
     </Container>
   );

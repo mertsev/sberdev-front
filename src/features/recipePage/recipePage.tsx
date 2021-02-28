@@ -111,8 +111,8 @@ export const recipePage: FC = memo(() => {
     <>
       <Container>
         <Row>
-          <Col size={6} sizeXL={5}>
-            <Card style={{ boxSizing: "border-box", marginBottom: "30px" }}>
+          <Col size={10} sizeXL={5}>
+            <Card style={{ marginBottom: "30px" }}>
               <CardContent compact>
                 <Cell
                   content={<TextBoxBigTitle>{"Ингредиенты"}</TextBoxBigTitle>}
@@ -144,7 +144,7 @@ export const recipePage: FC = memo(() => {
               </CardContent>
             </Card>
           </Col>
-          <Col size={7}>
+          <Col sizeXL={7} size={10}>
             <Card style={{ boxSizing: "border-box" }}>
               <CardContent compact>
                 <Cell
